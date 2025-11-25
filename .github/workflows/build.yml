@@ -7,7 +7,7 @@ on:
     branches:
       - berny
   schedule:
-    - cron: "12 1 * * 0"
+    - cron: "12 2 * * 0"
 
 jobs:
   # Test the image builds and works correctly.
