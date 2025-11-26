@@ -12,9 +12,13 @@ RUN apt-get update \
        build-essential wget libffi-dev libssl-dev procps \
        python3-pip python3-dev python3-setuptools python3-wheel python3-apt \
        iproute2 dbus sudo \
+       openssh-server openssh-client rsyslog \
+    && mkdir -p /var/run/sshd /var/log/sshd \
     && rm -rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
+
+RUN ssh-keygen -A && touch /var/log/auth.log
 
 # Allow installing stuff to system Python.
 RUN rm -f /usr/lib/python3.11/EXTERNALLY-MANAGED
